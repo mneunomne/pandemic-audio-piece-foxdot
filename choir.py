@@ -125,6 +125,38 @@ p4 >> loop(_d, dur=5, room=sinvar([0.2, 1], 100), mix=linvar([0.3, 0.6],40), lpf
 
 # exp 3 19.01.2021 17:51
 
-l1 >> 
+def play_a(v):
+    _a = get_random_audio()
+    v >> loop(_a, dur=5, pshift=P[-0.9, 0.35, 0.5, -0.4].shuffle(), room=sinvar([0.2, 1], 100), mix=linvar([0.3, 10], 50), lpf=linvar([2000, 100], 1000), amp=[1, 0, 0])
 
+def play_b(v):
+    _b = get_random_audio()
+    v >> loop(_b, dur=5, room=sinvar([0.2, 1], 100), amp=[0, 1, 0], mix=linvar([0, 10], 50), chop=[0, 5, 3, 10], spin=[1, 2])
 
+def play_c(v):
+    _c = get_random_audio()
+    v >> loop(_c, dur=5, chop=[2, 0, 1, 3], lpf=linvar([2000, 100], 6), mix=linvar([0.3, 5],4), room=sinvar([0.2, 1], 10), amp=1)
+    
+def play_d(v):
+    _d = get_random_audio()
+    v >> loop(_d, dur=5, room=sinvar([0.2, 1], 100), mix=linvar([0.3, 5],40), lpf=linvar([0, 1000], 100), formant=linvar([0.1, 0.7], 10))
+
+Clock.every(300, lambda: play_a(l2))
+Clock.every(100, lambda: play_b(l3))
+Clock.every(600, lambda: play_c(l4))
+Clock.every(1000, lambda: play_d(l5))
+
+Clock.every(30, lambda: play_a(l1))
+Clock.every(40, lambda: play_b(l6))
+Clock.every(60, lambda: play_c(l7))
+
+Clock.every(5, lambda: play_d(l8))
+
+Clock.every(5, lambda: play_a(l9))
+
+play_a(l2)
+play_b(l3)
+play_c(l4)
+play_d(l5)
+
+Clock.clear()
