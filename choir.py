@@ -102,3 +102,29 @@ l4 >> loop(get_random_audio(), dur=3, spin=linvar([1, -1], 8), pshift=[-0.9, 0.3
 l5 >> loop(get_random_audio(), dur=6, spin=linvar([-1, 1], 8), pshift=linvar([-0.9, 0.35, 0.5, -0.4], 4), lpf=0, room=sinvar([1,0.1], 10), mix=linvar([0.3, 1],40), chop=0)
 
 l7 >> loop(get_random_audio(), dur=8, spin=linvar([1, -1], 80), pshift=[-0.9, 0.35, 0.5, -0.4], lpf=linvar([0, 1000], 100), room=sinvar([1,0.1], 80), mix=linvar([0.3, 1],4), chop=[0,10])
+
+
+# exp 2 19.01.2021 16:14
+
+_a = get_random_audio()
+
+_b = get_random_audio()
+
+_c = get_random_audio()
+
+_d = get_random_audio()
+
+p1 >> loop(_a, dur=4, pshift=[-0.9, 0.35, 0.5, -0.4], room=sinvar([0.2, 1], 100), mix=linvar([0.3, 10], 50), lpf=linvar([2000, 100], 1000), amp=[0.4, 0, 0], spin=1, sus=4, blur=[2, 1, 0])
+
+p2 >> loop(_b, dur=5, room=sinvar([0.2, 1], 100), amp=[0, 1, 0], mix=linvar([0, 10], 50), chop=[0, 5, 3, 10], spin=1)
+
+p3 >> loop(_c, dur=5, chop=[2, 0, 1, 3], lpf=linvar([2000, 100], 6), mix=linvar([0.3, 1],4), room=sinvar([0.2, 1], 10), amp=0.7)
+
+p4 >> loop(_d, dur=5, room=sinvar([0.2, 1], 100), mix=linvar([0.3, 0.6],40), lpf=linvar([0, 1000], 100), formant=linvar([0.1, 0.3], 10))
+
+
+# exp 3 19.01.2021 17:51
+
+l1 >> 
+
+
