@@ -9,11 +9,11 @@ Cmd+S                : Save your work
 Cmd+O                : Open a file
 Cmd+M                : Toggle the menu
 Cmd+#                : Toggle console window
-print(SynthDefs)      : View available SynthDefs
-print(Samples)        : View character-to-sample
-print(FxList)         : View audio effects
-print(Attributes)     : View Player attributes
-print(PatternMethods) : View Pattern methods
+print(SynthDefs)
+print(Samples)
+print(FxList)
+print(Attributes)
+print(PatternMethods)
 
 # FxList
 <'formantFilter': keyword='formant'>

@@ -114,6 +114,7 @@ _c = get_random_audio()
 
 _d = get_random_audio()
 
+# fast repetition
 p1 >> loop(_a, dur=4, pshift=[-0.9, 0.35, 0.5, -0.4], room=sinvar([0.2, 1], 100), mix=linvar([0.3, 10], 50), lpf=linvar([2000, 100], 1000), amp=[0.4, 0, 0], spin=1, sus=4, blur=[2, 1, 0])
 
 p2 >> loop(_b, dur=5, room=sinvar([0.2, 1], 100), amp=[0, 1, 0], mix=linvar([0, 10], 50), chop=[0, 5, 3, 10], spin=1)
@@ -160,3 +161,41 @@ play_c(l4)
 play_d(l5)
 
 Clock.clear()
+
+#exps 20.01.2021
+
+def play_a(v):
+    _a = get_audio_from_speaker('Bojana')
+    v >> loop(_a, dur=4, pshift=[-0.9, 0.35, 0.5, -0.4], room=sinvar([0.2, 1], 100), mix=linvar([0.3, 10], 50), lpf=linvar([2000, 100], 10), amp=[1, 0, 0], spin=1, sus=4, blur=[2, 1, 0])
+
+def play_b(v):
+    _b = get_audio_from_speaker('Sangbong Lee')
+    v >> loop(_b, dur=10, sus=10, room=sinvar([0.2, 1], 100), amp=[0.75, 0], mix=linvar([0, 10], 50), chop=[0, 0, 1], spin=2, lpf=linvar([2000, 1000], 100))
+
+
+def play_c(v):
+    _c = get_audio_from_speaker('S. C.')
+    v >> loop(_c, dur=5, chop=[2, 0, 1, 3], lpf=linvar([2000, 100], 6), mix=linvar([0.3, 1],4), room=sinvar([0.2, 1], 10), amp=0.7)
+
+def play_d(v):
+    _d = get_audio_from_speaker('Soumya Hfk')
+    v >> loop(_d, dur=5, room=sinvar([0.2, 1], 100), mix=linvar([0, 16],40), lpf=linvar([1000, 2000], 100), formant=linvar([0.1, 1], 10), amp=[1.2, 0])
+
+play_a(p1)
+Clock.every(500, lambda: play_a(p1))
+
+play_b(p2)
+Clock.every(100, lambda: play_b(p2))
+
+play_c(p3)
+Clock.every(100, lambda: play_c(p3))
+
+
+# experiment with hpr lpr which i dont know what it is but it gives an interesting effect with sine waves
+
+_b = get_audio_from_speaker('Bojana')
+
+p1 >> loop(_b, dur=10, sus=5, room=linvar([0.2, 0.8], 50), mix=linvar([10, 0.1], 50), spin=[1, 0], lpf=sinvar([1550, 1670, 1880], 10), lpr=1, hpf=sinvar([150, 100, 170, 80], 10), hpr=0, amp=[1], chop=[0])
+
+
+
