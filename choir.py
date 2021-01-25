@@ -189,13 +189,3 @@ Clock.every(100, lambda: play_b(p2))
 
 play_c(p3)
 Clock.every(100, lambda: play_c(p3))
-
-
-# experiment with hpr lpr which i dont know what it is but it gives an interesting effect with sine waves
-
-_b = get_audio_from_speaker('Bojana')
-
-p1 >> loop(_b, dur=10, sus=5, room=linvar([0.2, 0.8], 50), mix=linvar([10, 0.1], 50), spin=[1, 0], lpf=sinvar([1550, 1670, 1880], 10), lpr=1, hpf=sinvar([150, 100, 170, 80], 10), hpr=0, amp=[1], chop=[0])
-
-
-
